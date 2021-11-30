@@ -46,12 +46,13 @@ namespace SoporteTecnico
                     txtCorreo.Text = "";
                     txtDescripcion.Text = "";
 
+                    
                     _ = numericUpDown1.Value = numericUpDown1.Value + 1;
 
                     
 
                 }
-                catch (DeletedRowInaccessibleException)
+                catch (Exception)
                 {
                     MessageBox.Show("No se puede agregar con valores vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -80,15 +81,15 @@ namespace SoporteTecnico
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
                         dataGridView1.Rows.RemoveAt(row.Index);
-                        MessageBox.Show("Se eliminó el ticket",
-                        "Ticket",
-                        MessageBoxButtons.OK);
+                        //MessageBox.Show("Se eliminó el ticket",
+                        //"Ticket",
+                        //MessageBoxButtons.OK);
 
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Selecciona una fila para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No has seleccionado una fila o no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -105,12 +106,13 @@ namespace SoporteTecnico
 
         private void btnCerrar_Click_1(object sender, EventArgs e)
         {
+            
             Close();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+           
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)

@@ -23,10 +23,29 @@ namespace SoporteTecnico
 
         private void ingresoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            Form formIngreso = new Ingreso();
-            formIngreso.MdiParent = this;
-            formIngreso.Show();
+            if (ActiveMdiChild != null)
+            {
+
+                if (ActiveMdiChild.GetType().Name != "Ingreso")
+                {
+                    ActiveMdiChild.Close();
+                    Form formIngreso = new Ingreso();
+                    formIngreso.MdiParent = this;
+                    formIngreso.Show();
+                }
+                else
+                {
+                    MessageBox.Show("El formulario ya está abierto");
+                }
+
+            }
+            else
+            {
+                Form formIngreso = new Ingreso();
+                formIngreso.MdiParent = this;
+                formIngreso.Show();
+            }
+
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

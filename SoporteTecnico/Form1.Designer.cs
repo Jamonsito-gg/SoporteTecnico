@@ -51,6 +51,7 @@ namespace SoporteTecnico
             // 
             this.menuPrincipal.MergeAction = System.Windows.Forms.MergeAction.Remove;
             this.menuPrincipal.Name = "menuPrincipal";
+            this.menuPrincipal.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuPrincipal.Size = new System.Drawing.Size(58, 20);
             this.menuPrincipal.Text = "Ingreso";
             this.menuPrincipal.Click += new System.EventHandler(this.ingresoToolStripMenuItem_Click);
@@ -58,6 +59,7 @@ namespace SoporteTecnico
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);

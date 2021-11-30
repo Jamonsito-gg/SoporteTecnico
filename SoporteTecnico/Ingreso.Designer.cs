@@ -29,6 +29,7 @@ namespace SoporteTecnico
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,14 +49,6 @@ namespace SoporteTecnico
             this.button1 = new System.Windows.Forms.Button();
             this.selectedRowsButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.colTicket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoNombre = new System.Windows.Forms.Label();
             this.infoApellido = new System.Windows.Forms.Label();
             this.infoCorreo = new System.Windows.Forms.Label();
@@ -69,6 +62,14 @@ namespace SoporteTecnico
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colTicket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -116,7 +117,7 @@ namespace SoporteTecnico
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 213);
+            this.label5.Location = new System.Drawing.Point(34, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 15);
             this.label5.TabIndex = 5;
@@ -299,62 +300,6 @@ namespace SoporteTecnico
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Soporte.mdf";
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colApellido
-            // 
-            this.colApellido.DataPropertyName = "Soporte.mdf";
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.DataPropertyName = "Soporte.mdf";
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            this.colCorreo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCorreo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colTicket
-            // 
-            this.colTicket.DataPropertyName = "Soporte.mdf";
-            this.colTicket.HeaderText = "Ticket N°";
-            this.colTicket.Name = "colTicket";
-            this.colTicket.ReadOnly = true;
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Items.AddRange(new object[] {
-            "Inactivo",
-            "Reparando",
-            "Completado"});
-            this.colEstado.Name = "colEstado";
-            this.colEstado.ReadOnly = true;
-            // 
-            // colEliminar
-            // 
-            this.colEliminar.HeaderText = "";
-            this.colEliminar.Name = "colEliminar";
-            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEliminar.ToolTipText = "Eliminar";
-            // 
-            // colDispositivo
-            // 
-            this.colDispositivo.HeaderText = "";
-            this.colDispositivo.Name = "colDispositivo";
-            this.colDispositivo.Visible = false;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.HeaderText = "";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.Visible = false;
-            // 
             // infoNombre
             // 
             this.infoNombre.AutoSize = true;
@@ -493,6 +438,63 @@ namespace SoporteTecnico
             this.label7.TabIndex = 13;
             this.label7.Text = "Nombre";
             // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Soporte.mdf";
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.DataPropertyName = "Soporte.mdf";
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.DataPropertyName = "Soporte.mdf";
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.Name = "colCorreo";
+            this.colCorreo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCorreo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colTicket
+            // 
+            this.colTicket.DataPropertyName = "Soporte.mdf";
+            this.colTicket.HeaderText = "Ticket N°";
+            this.colTicket.Name = "colTicket";
+            this.colTicket.ReadOnly = true;
+            // 
+            // colEstado
+            // 
+            dataGridViewCellStyle1.NullValue = "Inactivo";
+            this.colEstado.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Items.AddRange(new object[] {
+            "Inactivo",
+            "Reparando",
+            "Completado"});
+            this.colEstado.Name = "colEstado";
+            // 
+            // colEliminar
+            // 
+            this.colEliminar.HeaderText = "";
+            this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEliminar.ToolTipText = "Eliminar";
+            // 
+            // colDispositivo
+            // 
+            this.colDispositivo.HeaderText = "";
+            this.colDispositivo.Name = "colDispositivo";
+            this.colDispositivo.Visible = false;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.HeaderText = "";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.Visible = false;
+            // 
             // Ingreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -548,14 +550,6 @@ namespace SoporteTecnico
         private System.Windows.Forms.Label infoCorreo;
         private System.Windows.Forms.Label infoDispositivo;
         private System.Windows.Forms.Label infoDescripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
-        private System.Windows.Forms.DataGridViewLinkColumn colCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTicket;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colEstado;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDispositivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label infoTicket;
@@ -564,5 +558,13 @@ namespace SoporteTecnico
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
+        private System.Windows.Forms.DataGridViewLinkColumn colCorreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTicket;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colEstado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDispositivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
     }
 }

@@ -4,13 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoporteTecnico", "SoporteTecnico\SoporteTecnico.csproj", "{B5D13A94-4862-4913-855B-150F9741D08C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{68DCD0C5-2960-4A05-B8BC-8FADAE9E5388} = {68DCD0C5-2960-4A05-B8BC-8FADAE9E5388}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{A80C6A53-7D2D-4B02-BCD8-255007E2242D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlador", "Controlador\Controlador.csproj", "{68DCD0C5-2960-4A05-B8BC-8FADAE9E5388}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B5D13A94-4862-4913-855B-150F9741D08C} = {B5D13A94-4862-4913-855B-150F9741D08C}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
