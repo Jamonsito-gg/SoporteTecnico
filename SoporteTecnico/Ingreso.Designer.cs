@@ -29,24 +29,26 @@ namespace SoporteTecnico
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.btnNuevoDispositivo = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNuevoDispositivo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtDescripción = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.comboBoxDispositivo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.selectedRowsButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.infoNombre = new System.Windows.Forms.Label();
@@ -62,16 +64,7 @@ namespace SoporteTecnico
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.colTicket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -122,15 +115,17 @@ namespace SoporteTecnico
             this.label5.Size = new System.Drawing.Size(65, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "Dispositivo";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.comboBoxEstado);
+            this.groupBox1.Controls.Add(this.btnNuevoDispositivo);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtNuevoDispositivo);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnAgregar);
-            this.groupBox1.Controls.Add(this.txtDescripcion);
+            this.groupBox1.Controls.Add(this.txtDescripción);
             this.groupBox1.Controls.Add(this.txtCorreo);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -147,34 +142,52 @@ namespace SoporteTecnico
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de ticket";
             // 
-            // numericUpDown1
+            // comboBoxEstado
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(128, 168);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 14;
-            this.numericUpDown1.Tag = "Seleccionar N°";
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Items.AddRange(new object[] {
+            "Inactivo",
+            "Reparando",
+            "Completado"});
+            this.comboBoxEstado.Location = new System.Drawing.Point(112, 167);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(137, 23);
+            this.comboBoxEstado.TabIndex = 18;
+            // 
+            // btnNuevoDispositivo
+            // 
+            this.btnNuevoDispositivo.Location = new System.Drawing.Point(239, 210);
+            this.btnNuevoDispositivo.Name = "btnNuevoDispositivo";
+            this.btnNuevoDispositivo.Size = new System.Drawing.Size(50, 23);
+            this.btnNuevoDispositivo.TabIndex = 17;
+            this.btnNuevoDispositivo.Text = "<-";
+            this.btnNuevoDispositivo.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(295, 192);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 15);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Nuevo dispositivo";
+            // 
+            // txtNuevoDispositivo
+            // 
+            this.txtNuevoDispositivo.Location = new System.Drawing.Point(295, 210);
+            this.txtNuevoDispositivo.Name = "txtNuevoDispositivo";
+            this.txtNuevoDispositivo.PlaceholderText = "Agregar dispositivo";
+            this.txtNuevoDispositivo.Size = new System.Drawing.Size(144, 23);
+            this.txtNuevoDispositivo.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(34, 170);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 15);
+            this.label6.Size = new System.Drawing.Size(42, 15);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Ticket N°";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Text = "Estado";
             // 
             // btnAgregar
             // 
@@ -187,17 +200,17 @@ namespace SoporteTecnico
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // txtDescripcion
+            // txtDescripción
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(34, 260);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(405, 84);
-            this.txtDescripcion.TabIndex = 10;
+            this.txtDescripción.Location = new System.Drawing.Point(34, 260);
+            this.txtDescripción.Multiline = true;
+            this.txtDescripción.Name = "txtDescripción";
+            this.txtDescripción.Size = new System.Drawing.Size(405, 84);
+            this.txtDescripción.TabIndex = 10;
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(128, 109);
+            this.txtCorreo.Location = new System.Drawing.Point(112, 109);
             this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(185, 41);
@@ -205,18 +218,17 @@ namespace SoporteTecnico
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(128, 77);
+            this.txtApellido.Location = new System.Drawing.Point(112, 77);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(185, 23);
             this.txtApellido.TabIndex = 8;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(128, 45);
+            this.txtNombre.Location = new System.Drawing.Point(112, 45);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(185, 23);
             this.txtNombre.TabIndex = 7;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // comboBoxDispositivo
             // 
@@ -227,16 +239,15 @@ namespace SoporteTecnico
             "Notebook",
             "Torre-PC",
             "Movil"});
-            this.comboBoxDispositivo.Location = new System.Drawing.Point(128, 210);
+            this.comboBoxDispositivo.Location = new System.Drawing.Point(112, 210);
             this.comboBoxDispositivo.Name = "comboBoxDispositivo";
             this.comboBoxDispositivo.Size = new System.Drawing.Size(121, 23);
             this.comboBoxDispositivo.TabIndex = 6;
-            this.comboBoxDispositivo.SelectedIndexChanged += new System.EventHandler(this.comboBoxDispositivo_SelectedIndexChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCerrar);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnActualizar);
             this.groupBox2.Controls.Add(this.selectedRowsButton);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(487, 24);
@@ -257,15 +268,16 @@ namespace SoporteTecnico
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
             // 
-            // button1
+            // btnActualizar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(186, 351);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 37);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Actualizar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnActualizar.Location = new System.Drawing.Point(186, 351);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(145, 37);
+            this.btnActualizar.TabIndex = 3;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.button1_Click);
             // 
             // selectedRowsButton
             // 
@@ -282,23 +294,12 @@ namespace SoporteTecnico
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNombre,
-            this.colApellido,
-            this.colCorreo,
-            this.colTicket,
-            this.colEstado,
-            this.colEliminar,
-            this.colDispositivo,
-            this.colDescripcion});
             this.dataGridView1.Location = new System.Drawing.Point(37, 45);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(621, 300);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // infoNombre
             // 
@@ -308,7 +309,6 @@ namespace SoporteTecnico
             this.infoNombre.Name = "infoNombre";
             this.infoNombre.Size = new System.Drawing.Size(0, 15);
             this.infoNombre.TabIndex = 8;
-            this.infoNombre.Click += new System.EventHandler(this.infoNombre_Click);
             // 
             // infoApellido
             // 
@@ -367,7 +367,6 @@ namespace SoporteTecnico
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información detallada";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label13
             // 
@@ -438,63 +437,6 @@ namespace SoporteTecnico
             this.label7.TabIndex = 13;
             this.label7.Text = "Nombre";
             // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Soporte.mdf";
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colApellido
-            // 
-            this.colApellido.DataPropertyName = "Soporte.mdf";
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.DataPropertyName = "Soporte.mdf";
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            this.colCorreo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCorreo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colTicket
-            // 
-            this.colTicket.DataPropertyName = "Soporte.mdf";
-            this.colTicket.HeaderText = "Ticket N°";
-            this.colTicket.Name = "colTicket";
-            this.colTicket.ReadOnly = true;
-            // 
-            // colEstado
-            // 
-            dataGridViewCellStyle1.NullValue = "Inactivo";
-            this.colEstado.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Items.AddRange(new object[] {
-            "Inactivo",
-            "Reparando",
-            "Completado"});
-            this.colEstado.Name = "colEstado";
-            // 
-            // colEliminar
-            // 
-            this.colEliminar.HeaderText = "";
-            this.colEliminar.Name = "colEliminar";
-            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEliminar.ToolTipText = "Eliminar";
-            // 
-            // colDispositivo
-            // 
-            this.colDispositivo.HeaderText = "";
-            this.colDispositivo.Name = "colDispositivo";
-            this.colDispositivo.Visible = false;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.HeaderText = "";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.Visible = false;
-            // 
             // Ingreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -512,10 +454,9 @@ namespace SoporteTecnico
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingreso";
-            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Ingreso_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -532,8 +473,7 @@ namespace SoporteTecnico
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.ComboBox comboBoxDispositivo;
+        private System.Windows.Forms.TextBox txtDescripción;
         private System.Windows.Forms.Button btnAgregar;
         public System.Windows.Forms.TextBox txtCorreo;
         public System.Windows.Forms.TextBox txtApellido;
@@ -541,9 +481,8 @@ namespace SoporteTecnico
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button selectedRowsButton;
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label infoNombre;
         private System.Windows.Forms.Label infoApellido;
@@ -558,13 +497,10 @@ namespace SoporteTecnico
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
-        private System.Windows.Forms.DataGridViewLinkColumn colCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTicket;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colEstado;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDispositivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
+        public System.Windows.Forms.ComboBox comboBoxDispositivo;
+        private System.Windows.Forms.Button btnNuevoDispositivo;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtNuevoDispositivo;
+        private System.Windows.Forms.ComboBox comboBoxEstado;
     }
 }

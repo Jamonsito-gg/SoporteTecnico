@@ -32,6 +32,7 @@ namespace SoporteTecnico
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuPrincipal = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoDispositivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,12 +50,21 @@ namespace SoporteTecnico
             // 
             // menuPrincipal
             // 
+            this.menuPrincipal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoDispositivoToolStripMenuItem});
             this.menuPrincipal.MergeAction = System.Windows.Forms.MergeAction.Remove;
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuPrincipal.Size = new System.Drawing.Size(58, 20);
             this.menuPrincipal.Text = "Ingreso";
             this.menuPrincipal.Click += new System.EventHandler(this.ingresoToolStripMenuItem_Click);
+            // 
+            // nuevoDispositivoToolStripMenuItem
+            // 
+            this.nuevoDispositivoToolStripMenuItem.Name = "nuevoDispositivoToolStripMenuItem";
+            this.nuevoDispositivoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoDispositivoToolStripMenuItem.Text = "Agregar ticket";
+            this.nuevoDispositivoToolStripMenuItem.Click += new System.EventHandler(this.nuevoDispositivoToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -91,6 +101,7 @@ namespace SoporteTecnico
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuPrincipal;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoDispositivoToolStripMenuItem;
     }
 }
 

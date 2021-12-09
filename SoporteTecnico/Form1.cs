@@ -15,36 +15,13 @@ namespace SoporteTecnico
         public Form1()
         {
             InitializeComponent();
-
-
         }
 
 
 
         private void ingresoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveMdiChild != null)
-            {
 
-                if (ActiveMdiChild.GetType().Name != "Ingreso")
-                {
-                    ActiveMdiChild.Close();
-                    Form formIngreso = new Ingreso();
-                    formIngreso.MdiParent = this;
-                    formIngreso.Show();
-                }
-                else
-                {
-                    MessageBox.Show("El formulario ya está abierto");
-                }
-
-            }
-            else
-            {
-                Form formIngreso = new Ingreso();
-                formIngreso.MdiParent = this;
-                formIngreso.Show();
-            }
 
         }
 
@@ -68,7 +45,41 @@ namespace SoporteTecnico
         {
         }
 
+        private void nuevoDispositivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+            {
 
+                if (ActiveMdiChild.GetType().Name != "Ingreso")
+                {
+                    ActiveMdiChild.Close();
+                    Form formIngreso = new Ingreso();
+                    formIngreso.MdiParent = this;
+                    formIngreso.Show();
+                }
+                else
+                {
+                    MessageBox.Show("El formulario ya está abierto");
+                }
 
+            }
+            else
+            {
+                Form formIngreso = new Ingreso();
+                formIngreso.MdiParent = this;
+                formIngreso.Show();
+            }
+        }
+
+        private void agregarDispositivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarDispositivo agreg = new AgregarDispositivo();
+            agreg.pasado += new AgregarDispositivo.pasar(ejecutar);
+            agreg.Show();
+        }
+        public void ejecutar(string dato)
+        {
+            
+        }
     }
 }

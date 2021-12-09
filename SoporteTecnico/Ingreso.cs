@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.SqlClient;
+using SoporteTecnico.Modelo;
+using SoporteTecnico.Controlador;
 
 
 namespace SoporteTecnico
@@ -22,84 +24,61 @@ namespace SoporteTecnico
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
 
-               try
+            if ((txtNombre.Text != "") && (txtApellido.Text != "") && (txtCorreo.Text != "") && (txtDescripción.Text != "") && (comboBoxDispositivo.Text != "") && (comboBoxEstado.Text != ""))
+            {
+                try
                 {
-                    //string i = 0;
-                    //i = i++;
-                    int n = dataGridView1.Rows.Add();
+                    ESTicket EST = new ESTicket(
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    txtCorreo.Text,
+                    comboBoxEstado.Text,
+                    comboBoxDispositivo.Text,
+                    txtDescripción.Text
 
-                    dataGridView1.Rows[n].Cells[0].Value = txtNombre.Text;
-                    dataGridView1.Rows[n].Cells[1].Value = txtApellido.Text;
-                    dataGridView1.Rows[n].Cells[2].Value = txtCorreo.Text;
-                    dataGridView1.Rows[n].Cells[3].Value = numericUpDown1.Text;
-                    dataGridView1.Rows[n].Cells[6].Value = comboBoxDispositivo.SelectedItem;
-                    dataGridView1.Rows[n].Cells[7].Value = txtDescripcion.Text;
+                    );
+                    EST.insertarticket();
 
-
-                    //dataGridView1.Rows[n].Cells[3].Value = colTicket;
-
-
-                    txtNombre.Text = "";
-                    txtApellido.Text = "";
-                    txtCorreo.Text = "";
-                    txtDescripcion.Text = "";
-
-                    
-                    _ = numericUpDown1.Value = numericUpDown1.Value + 1;
-
-                    
+                    MessageBox.Show("Ingresado correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MostrarTicket();
+                }
+                catch (Exception ex)
+                {
 
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("No se puede agregar con valores vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("No se puede agregar con valores vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                }
+            }
 
-            
-    
-                     
-
-
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtCorreo.Text = "";
+            txtDescripción.Text = "";
+            comboBoxDispositivo.Text = "";
+            comboBoxEstado.Text = "";
         }
 
         private void selectedRowsButton_Click(object sender, EventArgs e)
         {
-            string message = "¿Seguro que quieres borrar el ticket?";
-            string title = "Advertencia";
 
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-
-            
-            if (result == DialogResult.Yes)
+            try
             {
-                try
-                {
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                    {
-                        dataGridView1.Rows.RemoveAt(row.Index);
-                        //MessageBox.Show("Se eliminó el ticket",
-                        //"Ticket",
-                        //MessageBoxButtons.OK);
-
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("No has seleccionado una fila o no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                
+                int NumTicket = (int)dataGridView1[3, dataGridView1.CurrentRow.Index].Value;
+                ESTicket ticketeliminar = new ESTicket();
+                ticketeliminar.eliminarticket(NumTicket);
+                MessageBox.Show("Se eliminó el ticket", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarTicket();
+            }
+            catch
+            {
+                MessageBox.Show("No se puede eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            else
-            {
-                    MessageBox.Show("No se eliminó el ticket",
-                    "Ticket",
-                    MessageBoxButtons.OK);
-            }
             
 
         }
@@ -110,64 +89,34 @@ namespace SoporteTecnico
             Close();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void Ingreso_Load(object sender, EventArgs e)
         {
-           
+            MostrarTicket();
         }
 
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
 
+        public void MostrarTicket()
+        {
+            DataTable DT = new DataTable();
+            BDTicket bdt = new BDTicket();
+            bdt.mostrar(ref DT);
+            dataGridView1.DataSource = DT;
+            
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            int NumTicket = (int)dataGridView1[3, dataGridView1.CurrentRow.Index].Value;
+            Modificar modificar = new Modificar();
+            modificar.modiNombre.Text = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
+            modificar.modiApellido.Text = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+            modificar.modiCorreo.Text = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+            modificar.comboBoxModiEstado.Text = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
 
-        }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxDispositivo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int n = e.RowIndex;
-
-            if (n!= -1) 
-            {
-                infoNombre.Text = (string)dataGridView1.Rows[n].Cells[0].Value;
-                infoApellido.Text = (string)dataGridView1.Rows[n].Cells[1].Value;
-                infoCorreo.Text = (string)dataGridView1.Rows[n].Cells[2].Value;
-                infoTicket.Text = (string)dataGridView1.Rows[n].Cells[3].Value;
-                infoDispositivo.Text = (string)dataGridView1.Rows[n].Cells[6].Value;
-                infoDescripcion.Text = (string)dataGridView1.Rows[n].Cells[7].Value;
-            }
-        }
-
-        private void infoNombre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-           
+            modificar.ShowDialog();
         }
     }
 }
